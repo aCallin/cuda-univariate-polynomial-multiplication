@@ -1,0 +1,29 @@
+[ TEST 1 ]
+n: 64
+b: 32
+Thread blocks: (2n + 1) / B
+
+a:   0  0 -1  0  1  0  0 -1 -1  0  1  0  1  0  1  0 -1 -1  0  0  1  1 -1 -1  1  1  1  0  0  0  1 -1 -1 -1  1 -1  0  0  0  0 -1 -1 -1  1  1  0  1  1  1 -1  1  0  0  1  1 -1  1  1  0  0 -1 -1  1 -1  1
+b:   1  0 -1  0  1 -1 -1 -1 -1  1 -1  1  1 -1  1  0 -1 -1  1  1 -1 -1  1  1  0 -1 -1  1 -1  0  0  0 -1 -1  1 -1  0  1  0  1 -1  1  1 -1 -1  0  1  0  1  1  0 -1  1  0  1  0 -1 -1  0 -1  1 -1  1 -1  0
+c_cpu:   0  0 -1  0  2  0 -2  0  1  1  2 -3  0  2  1  3 -2 -4  2 -1 -5  0  0  4  6  0 -3 -3  2  0 -1 -6 -1  4  1 -2 -3  2  4  3 -2 -3  0  7 -2 -4 -3  2 12 -2 -6  0  2 -3 -8 -5 -3  6  2 -2 -4  1  5 -3 -6  4 12  1  7 -8 -3 -2 -2  4 -1  3  4 -6 -3 -5  4 -4 -5 -5  3 -1  1 -3  0 -1 -3  1  6  2  0  2  8 -7  7  3 -1  0 -2  2 -1  2  3 -5  2 -7  2 -1  1 -4  1 -5  4 -1  2  1 -1 -2  2 -3  4 -3  2 -1  0
+c_gpu:   0  0 -1  0  2  0 -2  0  1  1  2 -3  0  2  1  3 -2 -4  2 -1 -5  0  0  4  6  0 -3 -3  2  0 -1 -6 -1  4  1 -2 -3  2  4  3 -2 -3  0  7 -2 -4 -3  2 12 -2 -6  0  2 -3 -8 -5 -3  6  2 -2 -4  1  5 -3 -6  4 12  1  7 -8 -3 -2 -2  4 -1  3  4 -6 -3 -5  4 -4 -5 -5  3 -1  1 -3  0 -1 -3  1  6  2  0  2  8 -7  7  3 -1  0 -2  2 -1  2  3 -5  2 -7  2 -1  1 -4  1 -5  4 -1  2  1 -1 -2  2 -3  4 -3  2 -1  0
+c_cpu and c_gpu are equal?: true
+
+[ TEST 2 ]
+Note: time measurements reflect only the CPU and GPU multipy functions -- it does not account for setup or tear-down time (malloc, free, etc.).
+
+n: 16384
+Multiplying with cpu... done (0.086753465 sec)
+Multiplying with gpu (B: 32)... done (0.000009746 sec)
+Multiplying with gpu (B: 64)... done (0.000007590 sec)
+Multiplying with gpu (B: 128)... done (0.000008917 sec)
+Multiplying with gpu (B: 246)... done (0.000008658 sec)
+Multiplying with gpu (B: 512)... done (0.000023469 sec)
+
+n: 65536
+Multiplying with cpu... done (1.500555442 sec)
+Multiplying with gpu (B: 32)... done (0.000025017 sec)
+Multiplying with gpu (B: 64)... done (0.000013719 sec)
+Multiplying with gpu (B: 128)... done (0.000011326 sec)
+Multiplying with gpu (B: 246)... done (0.000014779 sec)
+Multiplying with gpu (B: 512)... done (0.000029189 sec)
